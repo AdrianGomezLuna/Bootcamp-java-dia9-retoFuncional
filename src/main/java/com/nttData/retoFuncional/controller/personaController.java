@@ -21,7 +21,7 @@ public class personaController {
 	
 	@GetMapping(path="/login")
 	public String login(String user, String pass) {
-		var res = listUsuarios.stream().filter( p -> (p.getUser() == user && p.getPassword() == pass));
+		var res = listUsuarios.stream().filter( p -> (p.getUser().equals(user) && p.getPassword().equals(pass)));
 		if (res.count()==1) return "¡Hola!! " + user; 
 		else return "Usario o contraseña erroneos"; 		
 	}
