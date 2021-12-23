@@ -1,5 +1,7 @@
 package com.nttData.retoFuncional.controller;
 
+import java.util.HashMap;
+
 public class Persona {
 	
 	private String name;
@@ -39,5 +41,11 @@ public class Persona {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	/*public HashMap<String, String> toParams() {
+		var mapa = new HashMap<String, String[]>();
+		mapa.put(this.user, new String[] {this.name,this.user,this.password});
+		return mapa;
+	}*/
 
 }
