@@ -3,6 +3,8 @@ package com.nttData.retoFuncional.controller;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,8 +27,10 @@ public class personaController {
 	//http://localhost:8080/login?user=adri&password=1234 
 	@GetMapping(path="/login")
 	public String login(@RequestParam(value = "user") String user, @RequestParam(value = "password") String pass) {
-		var res = listUsuarios.stream().filter( p -> (p.getUser().equals(user) && p.getPassword().equals(pass)));
-		return (res.count()==1)? "¡Hola!! " + user : "Usario o contraseña erroneos";
+		var res = listUsuarios.stream()
+				.filter( p -> (p.getUser().equals(user) && p.getPassword().equals(pass))).collect(Collectors.toList()).get(0);
+		return "Hola" + res.getName();
+		//return (res.count()==1)? "¡Hola!! " + user : "Usario o contraseña erroneos";
 	}
 
 }
